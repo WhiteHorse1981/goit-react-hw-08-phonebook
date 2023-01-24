@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchContacts,
-  fetchContactsDelete,
   fetchContactsAdd,
+  fetchContactsDelete,
 } from './contacts.thunk';
 
 const initialState = {
@@ -26,6 +26,7 @@ const phonebookSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
+        console.log(state.contacts);
         state.isLoading = false;
         state.error = null;
         state.contacts = action.payload;

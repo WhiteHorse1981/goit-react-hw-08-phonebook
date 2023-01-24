@@ -7,7 +7,6 @@ export const ContactList = ({ phonebookContacts, handleDelete }) => {
       <ul className={css.ContactList}>
         {phonebookContacts.map(contact => (
           <li key={contact.id} className={css.contactListItem}>
-            <img src={contact.avatar} alt={contact.name} />
             <p className={css.contactText}>{contact.name}:</p>
             <p className={css.contactText}>{contact.phone}</p>
             <button

@@ -25,7 +25,7 @@ export const ContactForm = ({ handleSubmit }) => {
   const handleFormSubmit = e => {
     e.preventDefault();
 
-    handleSubmit({ name, phone: number });
+    handleSubmit({ name, number });
     setName('');
     setNumber('');
   };
