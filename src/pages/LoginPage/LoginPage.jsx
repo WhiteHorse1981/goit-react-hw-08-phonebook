@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/user.slice';
 
 const LoginPage = () => {
@@ -7,6 +8,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const hendlerSubmit = e => {
     e.preventDefault();
@@ -17,6 +19,7 @@ const LoginPage = () => {
     dispatch(loginThunk(formData));
     setEmail('');
     setPassword('');
+    navigate('/contacts');
   };
 
   return (

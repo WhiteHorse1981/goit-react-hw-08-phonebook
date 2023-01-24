@@ -3,7 +3,7 @@ import {
   fetchContacts,
   fetchContactsAdd,
   fetchContactsDelete,
-} from './contacts.thunk';
+} from './phonebook.thunk';
 
 const initialState = {
   contacts: [],
@@ -26,7 +26,6 @@ const phonebookSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        console.log(state.contacts);
         state.isLoading = false;
         state.error = null;
         state.contacts = action.payload;
@@ -53,7 +52,7 @@ const phonebookSlice = createSlice({
       .addCase(fetchContactsAdd.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // state.contacts.unshift(action.payload);
+        state.contacts.unshift(action.payload);
       })
       .addCase(fetchContactsAdd.rejected, (state, action) => {
         state.error = action.payload;

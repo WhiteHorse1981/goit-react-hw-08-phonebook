@@ -15,14 +15,13 @@ import {
   fetchContacts,
   fetchContactsAdd,
   fetchContactsDelete,
-} from 'redux/contacts.thunk';
+} from 'redux/phonebook.thunk';
 import { filterContact } from 'redux/phonebookSlice';
 
 const ContactsPage = () => {
   const filter = useSelector(selectorFilter);
 
   const contacts = useSelector(selectorContacts);
-  console.log(contacts);
   const isLoading = useSelector(selectorContactsIsloading);
 
   const dispatch = useDispatch();
