@@ -1,0 +1,38 @@
+.BoxLoginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #010101;
+}
+
+.FormLoginPage {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.InputLoginPage {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem auto;
+    align-items: center;
+    font-size: large;
+    text-align: left;
+    padding: 0.5rem 15rem 0.5rem 1rem;
+    width: 45%;
+    border-radius: 5px;
+    border: none;
+}
+
+.TitleLoginPage {
+    text-align: center;
+    color: #fff;
+}
+
+.ShowPasswordLoginPage {
+    margin-bottom: 10px;
+    display: block;
+    cursor: pointer;
+}

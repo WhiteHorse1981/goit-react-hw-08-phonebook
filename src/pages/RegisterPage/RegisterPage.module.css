@@ -1,11 +1,19 @@
-.form {
+.BoxRegisterPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #010101;
+}
+
+.FormRegisterPage {
     display: flex;
     flex-direction: column;
     color: #fff;
 }
 
-.formName,
-.formNumber {
+.InputRegisterPage {
     display: flex;
     flex-direction: column;
     margin: 0.5rem auto;
@@ -18,3 +26,7 @@
     border: none;
 }
 
+.TitleRegisterPage {
+    text-align: center;
+    color: #fff;
+}

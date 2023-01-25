@@ -1,21 +1,24 @@
 import propTypes from 'prop-types';
 import css from './ContactList.module.css';
+import { Button } from '@mui/material';
 
 export const ContactList = ({ phonebookContacts, handleDelete }) => {
   return (
-    <div className={css.wraperContactList}>
-      <ul className={css.ContactList}>
+    <div>
+      <ul>
         {phonebookContacts.map(contact => (
           <li key={contact.id} className={css.contactListItem}>
-            <p className={css.contactText}>{contact.name}:</p>
-            <p className={css.contactText}>{contact.number}</p>
-            <button
-              type="button"
-              className={css.contactListItemBtn}
-              onClick={() => handleDelete(contact.id)}
-            >
-              Delete
-            </button>
+            {contact.name}: {contact.number}
+            <div className={css.BtnBox}>
+              <Button
+                size="small"
+                variant="contained"
+                type="button"
+                onClick={() => handleDelete(contact.id)}
+              >
+                Delete
+              </Button>
+            </div>
           </li>
         ))}
       </ul>

@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
 import { useState } from 'react';
 import css from './ContactForm.module.css';
+import { Button } from '@mui/material';
 
 export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState('');
@@ -56,9 +57,9 @@ export const ContactForm = ({ handleSubmit }) => {
         value={number}
         onChange={handleChange}
       />
-      <button className={css.formBtn} type="submit">
+      <Button size="small" variant="contained" type="submit">
         Add contact
-      </button>
+      </Button>
     </form>
   );
 };

@@ -36,7 +36,7 @@ export const ContactsAPI = {
     return await data;
   },
 };
-/////////////////////////////////////////////////////////
+////////////////////////////UserAPI/////////////////////////////
 export const UserAPI = {
   async register(formData) {
     const { data } = await $publicHost.post(`users/signup`, formData);

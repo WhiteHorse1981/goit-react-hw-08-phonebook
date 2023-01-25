@@ -1,44 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { UserAPI } from 'services/userApi';
-
-export const registerThunk = createAsyncThunk(
-  'user/register',
-  async (formData, thunkAPI) => {
-    try {
-      const response = await UserAPI.register(formData);
-      localStorage.setItem('token', response.token);
-
-      return response;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const loginThunk = createAsyncThunk(
-  'user/login',
-  async (formData, thunkAPI) => {
-    try {
-      const response = await UserAPI.login(formData);
-      localStorage.setItem('token', response.token);
-      return response;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-export const logOutThunk = createAsyncThunk(
-  'user/logout',
-  async (_, thunkAPI) => {
-    try {
-      const response = await UserAPI.userLogOutRequest();
-      localStorage.setItem('token', response.token);
-      return response;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  curentUserThunk,
+  loginThunk,
+  logOutThunk,
+  registerThunk,
+} from './user.thunk';
 
 const initialState = {
   userData: null,
@@ -94,6 +60,23 @@ const userSlice = createSlice({
         state.token = null;
       })
       .addCase(logOutThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      /////////////////////////curentUserThunk///////////////////////////////////////
+      .addCase(curentUserThunk.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        curentUserThunk.fulfilled,
+        (state, { payload: { user, token } }) => {
+          state.isLoading = false;
+          state.userData = user;
+          state.token = token;
+        }
+      )
+      .addCase(curentUserThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       }),

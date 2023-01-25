@@ -7,4 +7,10 @@
     text-align: left;
     padding: 0.5rem 15rem 0.5rem 1rem;
     width: 45%;
+    border: none;
+    border-radius: 5px;
+}
+  
+.filterLabel{
+    color: #fff;
 }

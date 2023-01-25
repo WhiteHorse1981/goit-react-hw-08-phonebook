@@ -55,11 +55,11 @@ const ContactsPage = () => {
   };
 
   return (
-    <div className={css.app_style}>
-      <h1>Phonebook</h1>
+    <div className={css.ContactsPageStyle}>
+      <h1 className={css.TitlePhonebook}>Phonebook</h1>
       {isLoading && <p>Please wait...</p>}
       <ContactForm handleSubmit={handleAddContacts} />
-      <h2>Contacts</h2>
+      <h2 className={css.TitlePhonebook}>Contacts</h2>
       <Filter filter={filter} handleChange={handleChange} />
       <ContactList
         phonebookContacts={getFilteredContacts()}

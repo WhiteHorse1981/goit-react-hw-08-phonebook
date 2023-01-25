@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { registerThunk } from 'redux/user.slice';
+import css from './RegisterPage.module.css';
+import { Button } from '@mui/material';
+import { registerThunk } from 'redux/user.thunk';
 
 function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,7 +19,6 @@ function RegisterPage() {
       password,
     };
     dispatch(registerThunk(formData));
-    navigate('/contacts');
     reset();
   };
 
@@ -30,12 +29,15 @@ function RegisterPage() {
   };
 
   return (
-    <div>
-      <h1>Registration</h1>
-      <form onSubmit={handleSubmit}>
+    <div className={css.BoxRegisterPage}>
+      <h1 className={css.TitleRegisterPage}>
+        Register to use the phone book application.
+      </h1>
+      <form className={css.FormRegisterPage} onSubmit={handleSubmit}>
         <label>
           Name:
           <input
+            className={css.InputRegisterPage}
             type="text"
             value={name}
             onChange={e => setName(e.target.value)}
@@ -44,6 +46,7 @@ function RegisterPage() {
         <label>
           E-mail:
           <input
+            className={css.InputRegisterPage}
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
@@ -52,12 +55,15 @@ function RegisterPage() {
         <label>
           Password:
           <input
+            className={css.InputRegisterPage}
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit">Sign up</button>
+        <Button size="small" variant="contained" type="submit">
+          Sign up
+        </Button>
       </form>
     </div>
   );

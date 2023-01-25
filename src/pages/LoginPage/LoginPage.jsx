@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { loginThunk } from 'redux/user.slice';
+import css from './LoginPage.module.css';
+import { Button } from '@mui/material';
+import { loginThunk } from 'redux/user.thunk';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const hendlerSubmit = e => {
     e.preventDefault();
@@ -19,16 +19,18 @@ const LoginPage = () => {
     dispatch(loginThunk(formData));
     setEmail('');
     setPassword('');
-    navigate('/contacts');
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={hendlerSubmit}>
+    <div className={css.BoxLoginPage}>
+      <h1 className={css.TitleLoginPage}>
+        Enter your email and password to access the app.
+      </h1>
+      <form className={css.FormLoginPage} onSubmit={hendlerSubmit}>
         <label>
           Email:
           <input
+            className={css.InputLoginPage}
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
@@ -37,15 +39,21 @@ const LoginPage = () => {
         <label>
           Password:
           <input
+            className={css.InputLoginPage}
             type={visiblePassword ? 'text' : 'password'}
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <span onClick={() => setVisiblePassword(!visiblePassword)}>
-            {visiblePassword ? 'Сховати' : 'Показати'} пароль
+          <span
+            className={css.ShowPasswordLoginPage}
+            onClick={() => setVisiblePassword(!visiblePassword)}
+          >
+            {visiblePassword ? 'hide' : 'show'} password
           </span>
         </label>
-        <button type="submit">LogIn</button>
+        <Button size="small" variant="contained" type="submit">
+          LogIn
+        </Button>
       </form>
     </div>
   );

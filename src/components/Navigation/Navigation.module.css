@@ -1,0 +1,26 @@
+.BoxNavigate {
+    max-width: 300px;
+}
+
+.NavLink {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #010101;
+}
+
+.NavLinkActive {
+    margin-left: 15px;
+    text-decoration: none;
+    color: red;
+}
+
+.Header {
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #F2F3F4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
